@@ -1,11 +1,17 @@
 #language:es
   Característica: Diccionarios y significados
 
-    Escenario: Preguntar por palabras de un idioma
+    Esquema del escenario: Preguntar por palabras de un idioma
       Dado     Un diccionario de idioma "español"
       Y        el diccionario contiene la palabra "manzana"
-      Cuando   le pregunto al diccionario si existe la palabra "manzana"
+      Cuando   le pregunto al diccionario si existe la palabra "<palabraBuscada>"
       Entonces el diccionario debe contestar que si.
+
+      Ejemplos:
+      | palabraBuscada |
+      | manzana        |
+      | Manzana        |
+      | MANZANA        |
 
     Escenario: Preguntar por una palabra no existente en el diccionario
       Dado     Un diccionario de idioma "español"

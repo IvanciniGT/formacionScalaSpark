@@ -1,6 +1,8 @@
 package com.curso
 package diccionario
 
+import scala.io.Source
+
 trait Diccionario {
   def idioma:String
   def existe(palabra:String):Boolean
@@ -27,4 +29,27 @@ object DiccionarioUtils{
 
     dist(s2.length)(s1.length)
   }
+
+  def normalizarPalabra(palabra:String): String = palabra.trim().toLowerCase()
+
+  def leerFicheroDeDiccionario(carpeta:String, idioma:String): Map[String, Array[String]] ={
+    val nombreDelFichero = s"$carpeta/$idioma.diccionario.txt"
+    val canalLectura = Source.fromFile(nombreDelFichero)
+    val valorADevolver = canalLectura.getLines()
+      .map(linea => linea.split("="))
+      .map(array => (normalizarPalabra(array(0)), array(1).split("\\|")))
+      .toMap
+    canalLectura.close()
+    valorADevolver
+  }
 }
+
+
+
+
+
+
+
+
+
+
