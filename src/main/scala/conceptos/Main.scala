@@ -27,7 +27,24 @@ object Main {
     //c1.lado=20;
     println(c1.area);
 
-
+    val tupla1 = ("elemento1", "elemento2")
+    println(tupla1._1)
+    println(tupla1._2)
+    val tupla2 = new Tuple2[String, String]("elemento1", "elemento2")
 
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
