@@ -12,11 +12,13 @@ object UsadorDelDiccionario {
       if (miDiccionario.existe(palabra)) {
         println(s"La palabra $palabra existe")
         println("Sus significados son:")
-        miDiccionario.getSignificados(palabra).get.foreach(println)
+        miDiccionario.getSignificados(palabra).get.foreach(significado =>println(s"- $significado"))
       }else{
         println(s"La palabra $palabra no existe")
         println("Quizás quisiste decir:")
-        miDiccionario.getSugerencias(palabra).foreach(println)
+        var paraImprimir =""
+        miDiccionario.getSugerencias(palabra).foreach(sugerencia =>paraImprimir+=", " +sugerencia)
+        println(paraImprimir.substring(2))
       }
     }else{
       println(s"No hay diccionarios de $idioma")
