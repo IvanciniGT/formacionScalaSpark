@@ -10,8 +10,8 @@ class PiedraPapelTijera (interfaz: PPTInterfaz, reglas: PPTReglas) extends Juego
     interfaz.mostrarBienvenidaAlJuego(jugador);
 
     val partida = new PPTPartida();
-    partida.eleccionDeLaComputadora = eleccionAlAzar(reglas.getEleccionesPermitidas())
-    partida.eleccionDelJugador = interfaz.pedirEleccionJugador(jugador);
+    partida.eleccionDeLaComputadora = eleccionAlAzar(reglas.getEleccionesPermitidas)
+    partida.eleccionDelJugador = interfaz.pedirEleccionJugador(jugador, reglas.getEleccionesPermitidas;
     partida.resultado = reglas.calculaResultado(partida.eleccionDeLaComputadora, partida.eleccionDelJugador);
 
     interfaz.mostrarResultadoDeLaPartida(jugador, partida)
