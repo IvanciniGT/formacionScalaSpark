@@ -5,7 +5,7 @@ object Integral {
   def main(args:Array[String]) : Unit ={
     val y = (x:Double) => x*x + Math.sin(x) * Math.pow(Math.E,x)
     var tin=System.currentTimeMillis()
-    println(s"La integral entre 0 y 5 de $y, vale: ${integra(y,0,5)}")
+    println(s"La integral entre 0 y 5 de $y, vale: ${integra(y,0,5)()}")
     var tout=System.currentTimeMillis()
     println(s"Hemos tardado ${(tout-tin)} milisegundos")
     tin=System.currentTimeMillis()
@@ -18,15 +18,19 @@ object Integral {
 
   }
 
-  def integra(y:(Double) => Double, x1:Double, x2:Double, tolerancia: Double = 0.0000000001):Double = {
-    val areaTrapezoideGrande = areaTrapezoide(x1,x2,y(x1),y(x2))
+  def integra(y:(Double) => Double,
+              x1:Double,
+              x2:Double,
+              tolerancia: Double = 0.0000000001)(
+              areaTrapezoideGrande:Double = areaTrapezoide(x1,x2,y(x1),y(x2))):Double = {
+    //val areaTrapezoideGrande = areaTrapezoide(x1,x2,y(x1),y(x2))
     val xm = (x2+x1)/2
     val areaTrapezoidePequenoDeLaIzquierda = areaTrapezoide(x1,xm,y(x1),y(xm))
     val areaTrapezoidePequenoDeLaDerecha   = areaTrapezoide(xm,x2,y(xm),y(x2))
     val diferenciaDeAreas = Math.abs(areaTrapezoideGrande-areaTrapezoidePequenoDeLaIzquierda-areaTrapezoidePequenoDeLaDerecha)
     if(diferenciaDeAreas > tolerancia)
-      integra(y,x1,xm, tolerancia) +
-        integra(y,xm,x2, tolerancia)
+      integra(y,x1,xm, tolerancia)(areaTrapezoidePequenoDeLaIzquierda ) +
+        integra(y,xm,x2, tolerancia)( areaTrapezoidePequenoDeLaDerecha)
     else
       areaTrapezoidePequenoDeLaIzquierda + areaTrapezoidePequenoDeLaDerecha
   }
@@ -57,7 +61,7 @@ object Integral {
 
   def integraMapReduce(y:(Double) => Double, x1:Double, x2:Double, tolerancia: Double = 0.0000000001, N: Int = 10):Double = {
     calcularNIntervalos(x1,x2,N)
-      .map( intervalo => integra(y,intervalo._1, intervalo._2, tolerancia))
+      .map( intervalo => integra(y,intervalo._1, intervalo._2, tolerancia)())
       .sum
   }
 }
