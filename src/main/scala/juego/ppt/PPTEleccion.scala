@@ -1,4 +1,4 @@
 package com.curso
-package ppt
+package juego.ppt
 
 class PPTEleccion(val nombre:String)

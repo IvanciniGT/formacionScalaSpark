@@ -1,6 +1,8 @@
 package com.curso
-package ppt
-import ppt.ResultadosPartida.{ComputadoraGana, Empate, JugadorGana, Resultado}
+package juego.ppt.variantes
+
+import juego.ResultadosPartida.{ComputadoraGana, Empate, JugadorGana, Resultado}
+import juego.ppt.{PPTEleccion, PPTReglas}
 
 object PPTReglasBasicas extends PPTReglas{
   object Piedra extends PPTEleccion("PIEDRA")

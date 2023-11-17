@@ -1,8 +1,9 @@
 package com.curso
-package ppt
+package juego.ppt
 
-case class PPTPartida () {
+import juego.Partida
+
+case class PPTPartida () extends Partida {
   var eleccionDeLaComputadora: PPTEleccion = _
   var eleccionDelJugador:PPTEleccion = _
-  var resultado: ResultadosPartida.Resultado = _
 }

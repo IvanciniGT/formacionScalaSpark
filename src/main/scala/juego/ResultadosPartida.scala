@@ -1,5 +1,5 @@
 package com.curso
-package ppt
+package juego
 
 object ResultadosPartida extends Enumeration{
   type Resultado = Value
