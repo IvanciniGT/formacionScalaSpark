@@ -1,6 +1,4 @@
 package com.curso
 package juego
 
-case class Jugador (){
-  def nombre:String = _
-}
+case class Jugador (val nombre:String)

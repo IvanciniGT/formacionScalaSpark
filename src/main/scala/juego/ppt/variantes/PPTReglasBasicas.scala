@@ -2,7 +2,7 @@ package com.curso
 package juego.ppt.variantes
 
 import juego.ResultadosPartida.{ComputadoraGana, Empate, JugadorGana, Resultado}
-import juego.ppt.{PPTEleccion, PPTReglas}
+import juego.ppt.{PPTEleccion, PPTPartida, PPTReglas}
 
 object PPTReglasBasicas extends PPTReglas{
   object Piedra extends PPTEleccion("PIEDRA")
@@ -17,9 +17,8 @@ object PPTReglasBasicas extends PPTReglas{
                 (Tijera , Map( (Piedra, ComputadoraGana),(Papel, JugadorGana), (Tijera,Empate) ) )
   )
 
-  override def calculaResultado(eleccionDeLaComputadora: PPTEleccion,
-                                eleccionDelJugador: PPTEleccion): Resultado = {
-    reglas(eleccionDelJugador)(eleccionDeLaComputadora)
+  override def calculaResultado(partida: PPTPartida): Resultado = {
+    reglas(partida.eleccionDelJugador)(partida.eleccionDeLaComputadora)
   }
 
   override def getEleccionesPermitidas: List[PPTEleccion] = elecciones

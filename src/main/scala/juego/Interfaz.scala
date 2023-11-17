@@ -1,8 +1,7 @@
 package com.curso
 package juego
 
-trait Interfaz {
-  def mostrarResultadoDeLaPartida(partida: Partida): Unit
-  def mostrarBienvenidaAlJuego(partida: Partida): Unit
-
+trait Interfaz [P <: Partida]{
+  def mostrarResultadoDeLaPartida(partida: P): Unit
+  def mostrarBienvenidaAlJuego(partida: P): Unit
 }
