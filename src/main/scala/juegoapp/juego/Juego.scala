@@ -3,9 +3,7 @@ package juegoapp.juego
 
 import juegoapp.entity.{Jugador, Partida}
 
-import com.curso.juegoapp.juego.ppt.{PPTInterfaz, PPTReglas}
-
 trait Juego[P <: Partida, R <: Reglas[P], I <: Interfaz[P]] {
   def jugarPartida
-  (jugador: Jugador, reglas: PPTReglas, interfaz: PPTInterfaz, nombreJuego: String): Partida
+  (jugador: Jugador, reglas: R, interfaz: I, nombreJuego: String): Partida
 }
