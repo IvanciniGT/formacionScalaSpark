@@ -1,7 +1,8 @@
 package com.curso
-package juego.ppt
+package juegoapp.juego.ppt
 
-import juego.{Juego, Jugador, Partida}
+import com.curso.juegoapp.entity.{Jugador, Partida}
+import com.curso.juegoapp.Juego
 
 import scala.util.Random
 

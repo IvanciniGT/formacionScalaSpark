@@ -1,4 +1,4 @@
 package com.curso
-package juego
+package juegoapp.entity
 
 case class Jugador (val nombre:String)

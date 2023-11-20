@@ -1,7 +1,7 @@
 package com.curso
-package juego.ppt
+package juegoapp.juego.ppt
 
-import juego.Interfaz
+import com.curso.juegoapp.juego.Interfaz
 
 trait PPTInterfaz extends Interfaz[PPTPartida] {
   def pedirEleccionJugador(partida: PPTPartida, reglas: PPTReglas): PPTEleccion

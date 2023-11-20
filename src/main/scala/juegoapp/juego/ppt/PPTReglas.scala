@@ -1,7 +1,7 @@
 package com.curso
-package juego.ppt
+package juegoapp.juego.ppt
 
-import juego.Reglas
+import com.curso.juegoapp.juego.Reglas
 
 trait PPTReglas extends Reglas[PPTPartida]{
 

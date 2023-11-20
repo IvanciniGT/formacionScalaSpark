@@ -1,5 +1,5 @@
 package com.curso
-package juego
+package juegoapp.entity
 
 class Partida() {
   var resultado: ResultadosPartida.Resultado = _

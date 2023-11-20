@@ -1,8 +1,9 @@
 package com.curso
-package juego.ppt.variantes
+package juegoapp.juego.ppt.variantes
 
-import juego.ResultadosPartida.{ComputadoraGana, Empate, JugadorGana, Resultado}
-import juego.ppt.{PPTEleccion, PPTPartida, PPTReglas}
+import com.curso.juegoapp.entity.ResultadosPartida.{ComputadoraGana, Empate, JugadorGana, Resultado}
+
+import com.curso.juegoapp.juego.ppt.{PPTEleccion, PPTPartida, PPTReglas}
 
 object PPTReglasBasicas extends PPTReglas{
   object Piedra extends PPTEleccion("PIEDRA")

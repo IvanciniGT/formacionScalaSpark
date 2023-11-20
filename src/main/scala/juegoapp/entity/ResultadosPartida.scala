@@ -1,5 +1,5 @@
 package com.curso
-package juego
+package juegoapp.entity
 
 object ResultadosPartida extends Enumeration{
   type Resultado = Value

@@ -1,5 +1,7 @@
 package com.curso
-package juego
+package juegoapp.juego
+
+import com.curso.juegoapp.entity.Partida
 
 trait Interfaz [P <: Partida]{
   def mostrarResultadoDeLaPartida(partida: P): Unit

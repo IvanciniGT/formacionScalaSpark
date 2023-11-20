@@ -1,7 +1,7 @@
 package com.curso
-package juego.ppt
+package juegoapp.juego.ppt
 
-import juego.Partida
+import com.curso.juegoapp.entity.Partida
 
 class PPTPartida () extends Partida {
   var eleccionDeLaComputadora: PPTEleccion = _
