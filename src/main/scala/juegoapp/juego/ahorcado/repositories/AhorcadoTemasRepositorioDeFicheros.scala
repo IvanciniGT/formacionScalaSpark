@@ -10,8 +10,8 @@ import scala.util.Random
 object AhorcadoTemasRepositorioDeFicheros extends AhorcadoTemasRepositorio {
   val temas:Map[String, String] = leerFicheroDeTemas
   private val palabrasDeCadaTema =new mutable.HashMap [String, List[String]]()
-  temas.keys.foreach(this.cargarPalabrasDelTema)
   def getPalabraAlAzar(tema:String):String = {
+    if(!palabrasDeCadaTema.contains(tema)) cargarPalabrasDelTema(tema)
     val palabras = palabrasDeCadaTema(tema)
     palabras(Random.nextInt(palabras.length))
   }
