@@ -1,7 +1,6 @@
 package com.curso
 package juegoapp.entity
 
-class Partida() {
+class Partida(val jugador: Jugador, val nombreJuego: String) {
   var resultado: ResultadosPartida.Resultado = _
-  var jugador: Jugador = _
 }

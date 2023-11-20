@@ -2,5 +2,5 @@ package com.curso
 package juegoapp
 
 trait JuegosRepositorio {
-  def getJuegos: List[Juego[_,_,_]]
+  def getJuegos: List[JuegoConcreto]
 }

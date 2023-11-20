@@ -2,16 +2,15 @@ package com.curso
 package juegoapp.juego.ppt
 
 import com.curso.juegoapp.entity.{Jugador, Partida}
-import com.curso.juegoapp.Juego
+import com.curso.juegoapp.juego.Juego
 
 import scala.util.Random
 
-class PiedraPapelTijera  extends Juego[PPTPartida, PPTReglas, PPTInterfaz] {
+object PiedraPapelTijera  extends Juego[PPTPartida, PPTReglas, PPTInterfaz] {
 
   override def jugarPartida
-  (jugador: Jugador, reglas: PPTReglas, interfaz: PPTInterfaz): Partida = {
-    val partida = new PPTPartida();
-    partida.jugador = jugador
+  (jugador: Jugador, reglas: PPTReglas, interfaz: PPTInterfaz,nombreJuego:String ): Partida = {
+    val partida = new PPTPartida(jugador,nombreJuego );
     interfaz.mostrarBienvenidaAlJuego(partida)
     partida.eleccionDeLaComputadora = eleccionAlAzar(reglas.getEleccionesPermitidas)
     partida.eleccionDelJugador = interfaz.pedirEleccionJugador(partida, reglas);

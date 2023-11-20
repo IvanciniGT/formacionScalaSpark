@@ -8,7 +8,7 @@ trait InterfazAppJuegos {
 
   def mostrarEstadisticas(jugador: Jugador, partidas: List[Partida]): Unit = ???
 
-  def solicitarJuego(getJuegos: List[Juego[_, _, _]]): Juego[_,_,_] = ???
+  def solicitarJuego(getJuegos: List[JuegoConcreto]): JuegoConcreto = ???
 
   def solicitarOpcion(LISTADO_OPCIONES: List[String], estadoDeLaAplicacion: EstadoAppJuegos): String = ???
 
