@@ -1,6 +1,6 @@
 package com.curso
 package juegoapp.entity
 
-import com.curso.juegoapp.juego.Juego
+import juegoapp.JuegoConcreto
 
-class EstadoAppJuegos (var jugador: Jugador = _ , var juego: Juego[_,_,_] = _ )
+class EstadoAppJuegos (var jugador: Jugador = null , var juego: JuegoConcreto = null )

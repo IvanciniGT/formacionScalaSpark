@@ -7,8 +7,8 @@ import com.curso.juegoapp.juego.ppt.variantes.JuegoPPTBasicoConsola
 
 object JuegosRepositorioParaConsola extends JuegosRepositorio {
   def getJuegos: List[JuegoConcreto] = {
-    List.newBuilder(
-      JuegoPPTBasicoConsola
-    ).result()
+    List.newBuilder
+      .addOne(JuegoPPTBasicoConsola)
+      .result()
   }
 }

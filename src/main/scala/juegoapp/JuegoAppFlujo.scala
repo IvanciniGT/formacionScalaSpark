@@ -10,13 +10,11 @@ class JuegoAppFlujo (private val interfaz: InterfazAppJuegos,
                      private val repositorioDeJugadores: JugadoresRepositorio,
                      private val repositorioDePartidas: PartidasRepositorio){
 
-  private val LISTADO_OPCIONES = new ListBuffer[ Tuple2[String, (EstadoAppJuegos)=>{}] ]  ()
-  LISTADO_OPCIONES += (
-                            ("Jugar a un juego", this.jugar _),
-                            ("Estadísticas", this.estadisticas _),
-                            ("Salir", this.salir _)
-                          );
   val estadoDeLaAplicacion = new EstadoAppJuegos();
+  private val LISTADO_OPCIONES = new ListBuffer[ Tuple2[String, (EstadoAppJuegos)=>Unit] ]  ()
+  LISTADO_OPCIONES +=  Tuple2("Jugar a un juego", this.jugar )
+  LISTADO_OPCIONES +=  Tuple2("Estadísticas", this.estadisticas )
+  LISTADO_OPCIONES +=  Tuple2("Salir", this.salir )
 
   def iniciarAppJuego(): Unit = {
     interfaz.mostrarBienvenida();
@@ -28,8 +26,10 @@ class JuegoAppFlujo (private val interfaz: InterfazAppJuegos,
           estadoDeLaAplicacion.jugador = repositorioDeJugadores.getJugador(nombreJugador).get;
           interfaz.mostrarBienvenidaAlJugador(estadoDeLaAplicacion)
         } else {
-          if (interfaz.confirmaCreacionJugador(nombreJugador))
+          if (interfaz.confirmaCreacionJugador(nombreJugador)) {
             estadoDeLaAplicacion.jugador = repositorioDeJugadores.altaJugador(nombreJugador)
+            interfaz.mostrarConfirmacionDeCreacionDeJugador(estadoDeLaAplicacion)
+          }
         }
       }else {
         // Llegados a este punto, tendría jugador
@@ -43,6 +43,7 @@ class JuegoAppFlujo (private val interfaz: InterfazAppJuegos,
 
   def jugar(estado: EstadoAppJuegos): Unit ={
     val juego = interfaz.solicitarJuego(repositorioDeJuegos.getJuegos)
+    estado.juego = juego
     val partida = juego.jugarPartida(estado.jugador)
     repositorioDePartidas.altaPartida(partida)
   }
