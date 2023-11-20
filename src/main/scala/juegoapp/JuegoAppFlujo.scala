@@ -1,17 +1,20 @@
 package com.curso
 package juegoapp
 
-import juegoapp.entity.{EstadoAppJuegos, Jugador}
+import juegoapp.entity.EstadoAppJuegos
+
+import scala.collection.mutable.ListBuffer
 
 class JuegoAppFlujo (private val interfaz: InterfazAppJuegos,
                      private val repositorioDeJuegos: JuegosRepositorio,
                      private val repositorioDeJugadores: JugadoresRepositorio,
                      private val repositorioDePartidas: PartidasRepositorio){
 
-  private val LISTADO_OPCIONES = List[Tuple2[String, (EstadoAppJuegos)=>{}]](
-                            ("Jugar a un juego", jugar),
-                            ("Estadísticas", estadisticas),
-                            ("Salir", salir)
+  private val LISTADO_OPCIONES = new ListBuffer[ Tuple2[String, (EstadoAppJuegos)=>{}] ]  ()
+  LISTADO_OPCIONES += (
+                            ("Jugar a un juego", this.jugar _),
+                            ("Estadísticas", this.estadisticas _),
+                            ("Salir", this.salir _)
                           );
   val estadoDeLaAplicacion = new EstadoAppJuegos();
 
@@ -31,9 +34,9 @@ class JuegoAppFlujo (private val interfaz: InterfazAppJuegos,
       }else {
         // Llegados a este punto, tendría jugador
         // Mostrar un menu con las opciones: JUGAR, ESTADISTICAS, SALIR
-        val opcion = interfaz.solicitarOpcion(LISTADO_OPCIONES, estadoDeLaAplicacion)
+        val opcionSeleccionada = interfaz.solicitarOpcion(LISTADO_OPCIONES.map(_._1).toList, estadoDeLaAplicacion)
         // Ejecutamos la opción indicada
-        LISTADO_OPCIONES.filter(opcion => opcion._1 == opcion).head._2(estadoDeLaAplicacion)
+        LISTADO_OPCIONES.filter(opcion => opcion._1 == opcionSeleccionada).head._2(estadoDeLaAplicacion)
       }
     }
   }
