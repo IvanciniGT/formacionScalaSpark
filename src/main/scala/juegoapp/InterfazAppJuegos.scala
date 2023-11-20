@@ -18,6 +18,6 @@ trait InterfazAppJuegos {
 
   def pedirJugador(): String = ???
 
-  def mostrarBienvenida() = ???
+  def mostrarBienvenida():Unit = ???
 
 }
