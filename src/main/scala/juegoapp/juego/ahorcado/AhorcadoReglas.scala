@@ -1,10 +1,12 @@
 package com.curso
 package juegoapp.juego.ahorcado
 
-import com.curso.juegoapp.juego.Reglas
+import juegoapp.juego.Reglas
 
-trait AhorcadoReglas extends Reglas[AhorcadoPartida]{
+import com.curso.juegoapp.entity.Jugador
 
-  def getEleccionesPermitidas: List[PPTEleccion]
+trait AhorcadoReglas extends Reglas[AhorcadoPartida] {
+
+  def iniciarPartida(jugador: Jugador, nombreJuego: String, palabra: String): AhorcadoPartida
 
 }

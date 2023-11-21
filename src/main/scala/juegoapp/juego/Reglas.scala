@@ -1,9 +1,10 @@
 package com.curso
 package juegoapp.juego
 
-import com.curso.juegoapp.entity.ResultadosPartida.Resultado
-import com.curso.juegoapp.entity.Partida
+import juegoapp.entity.Partida
+import juegoapp.entity.ResultadosPartida.Resultado
 
 trait Reglas[P <: Partida] {
-  def calculaResultado(partida: P): Resultado
+
+  def calculaResultado(partida: P, otrasCosas:Object*): Resultado
 }

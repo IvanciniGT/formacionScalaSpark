@@ -18,7 +18,11 @@ object PPTReglasBasicas extends PPTReglas{
                 (Tijera , Map( (Piedra, ComputadoraGana),(Papel, JugadorGana), (Tijera,Empate) ) )
   )
 
-  override def calculaResultado(partida: PPTPartida): Resultado = {
+  override def calculaResultado(partida: PPTPartida, otros:Object*): Resultado = {
+    if(partida.eleccionDelJugador == null)
+      throw new Exception("Me faltan datos")
+    if(partida.eleccionDeLaComputadora == null)
+      throw new Exception("Me faltan datos")
     reglas(partida.eleccionDelJugador)(partida.eleccionDeLaComputadora)
   }
 

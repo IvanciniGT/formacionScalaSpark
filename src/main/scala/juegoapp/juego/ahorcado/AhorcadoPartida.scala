@@ -1,9 +1,12 @@
 package com.curso
 package juegoapp.juego.ahorcado
 
-import com.curso.juegoapp.entity.{Jugador, Partida}
+import juegoapp.entity.{Partida, ResultadosPartida}
 
-class AhorcadoPartida(jugador:Jugador, nombreJuego: String) extends Partida(jugador, nombreJuego) {
-  var eleccionDeLaComputadora: PPTEleccion = _
-  var eleccionDelJugador:PPTEleccion = _
+trait AhorcadoPartida extends Partida {
+  val palabraAAdivinar: String
+  val letrasUsadas: List[Char]
+  val vidasQueMeQuedan: Int
+  val palabraEnmascarada: String
+  val resultado: ResultadosPartida.Resultado
 }
