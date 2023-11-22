@@ -6,5 +6,5 @@ import com.curso.juegoapp.juego.Interfaz
 trait AhorcadoInterfaz extends Interfaz[AhorcadoPartida] {
   def solicitarLetra(partida: AhorcadoPartida): Char
 
-  def solicitarTema(temas: AhorcadoTemasRepositorio): String
+  def solicitarTema(temas:  Map[String, String]): String
 }

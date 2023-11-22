@@ -17,11 +17,40 @@ object AhorcadoReglasBasicas extends AhorcadoReglas{
                             palabraAAdivinar = palabra)
 
 
-  override def calculaResultado(partida: AhorcadoPartida, letra: Object*): AhorcadoPartida = {
-    this.calculaResultado(partida, letra(0).asInstanceOf[Char])
+  override def calculaResultado(partida: AhorcadoPartida, letra: Any*): AhorcadoPartida = {
+    if(letra.length != 1) throw new IllegalArgumentException("Se debe pasar una letra")
+    if(! letra(0).isInstanceOf[Char]) throw new IllegalArgumentException("Se debe pasar una letra")
+    this.calculaResultadoInterno(partida, letra(0).asInstanceOf[Char])
   }
-  private def calculaResultado(partida: AhorcadoPartida, letra: Char): AhorcadoPartida = {
+  private def calculaResultadoInterno(partida: AhorcadoPartida, letra: Char): AhorcadoPartida = {
+    val palabraNormalizada = Utilidades.normalizarPalabra(partida.palabraAAdivinar)
+    val nuevaLetra = Utilidades.normalizarCaracter(letra)
 
+    var vidasNuevas = partida.vidasQueMeQuedan
+    var letrasUsadasNuevas = partida.letrasUsadas
+    var resultadosPartidaNuevos = partida.resultado
+
+    if(letrasUsadasNuevas.contains(nuevaLetra)) return partida
+    letrasUsadasNuevas = nuevaLetra :: letrasUsadasNuevas
+    if(palabraNormalizada.contains(nuevaLetra)) {
+      if(!palabraNormalizada.exists(
+        caracter => !letrasUsadasNuevas.contains(caracter) && caracter != ' ' && caracter != '-'
+      ))
+        resultadosPartidaNuevos = ResultadosPartida.JugadorGana
+
+    }else{
+      vidasNuevas = vidasNuevas - 1
+      if(vidasNuevas == 0)
+        resultadosPartidaNuevos = ResultadosPartida.ComputadoraGana
+    }
+    new AhorcadoPartidaImpl(
+      jugador = partida.jugador,
+      nombreJuego = partida.nombreJuego,
+      palabraAAdivinar = partida.palabraAAdivinar,
+      vidasQueMeQuedan = vidasNuevas,
+      resultado = resultadosPartidaNuevos,
+      letrasUsadas = letrasUsadasNuevas
+    )
   }
 
 
@@ -41,6 +70,7 @@ private class AhorcadoPartidaImpl (
 
 private object Utilidades {
   def normalizarCaracter(c:Char): Char = c.toLower
+  def normalizarPalabra(p: String): String = p.toList.map(normalizarCaracter).toString
 
   def enmascararPalabra(palabraAAdivinar: String, letrasUsadas: List[Char]): String = {
     palabraAAdivinar.toList.map(
@@ -55,3 +85,26 @@ private object Utilidades {
     ).toString
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
