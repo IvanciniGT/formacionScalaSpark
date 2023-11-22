@@ -4,9 +4,14 @@ import java.sql.{Connection, DriverManager, ResultSet}
 
 object H2DatabaseSQL {
   def main(args: Array[String]): Unit = {
-    val url = "jdbc:h2:mem:test"
+    //val url = "jdbc:h2:mem:test"
     //Class.forName("org.h2.Driver")
-    val connection: Connection = DriverManager.getConnection(url, "sa", "")
+    //val connection: Connection = DriverManager.getConnection(url, "sa", "")
+    val url = "jdbc:mysql://63.32.44.28:3333/midb"
+    //Class.forName("org.h2.Driver")
+    Class.forName("com.mysql.cj.jdbc.Driver")
+    val connection: Connection = DriverManager.getConnection(url, "usuario", "password")
+    //63.32.44.28
     try {
       val statement = connection.createStatement()
       statement.execute("CREATE TABLE IF NOT EXISTS personas (id INT PRIMARY KEY, nombre VARCHAR(255))")

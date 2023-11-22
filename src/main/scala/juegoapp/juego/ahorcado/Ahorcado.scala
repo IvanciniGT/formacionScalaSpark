@@ -19,7 +19,7 @@ object Ahorcado  extends Juego[AhorcadoPartida, AhorcadoReglas, AhorcadoInterfaz
 
     while(partida.resultado == null){
       val letra: Char = interfaz.solicitarLetra(partida)
-      reglas.calculaResultado(partida, letra)
+      partida=reglas.calculaResultado(partida, letra)
     }
     interfaz.mostrarResultadoDeLaPartida(partida)
     partida
