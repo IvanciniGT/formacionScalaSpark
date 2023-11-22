@@ -33,9 +33,10 @@ object AhorcadoReglasBasicas extends AhorcadoReglas{
     if(letrasUsadasNuevas.contains(nuevaLetra)) return partida
     letrasUsadasNuevas = nuevaLetra :: letrasUsadasNuevas
     if(palabraNormalizada.contains(nuevaLetra)) {
-      if(!palabraNormalizada.exists(
-        caracter => (!letrasUsadasNuevas.contains(caracter)) && caracter != ' ' && caracter != '-'
-      ))
+      val macheados = palabraNormalizada.filter(
+        caracter => (letrasUsadasNuevas.contains(caracter)) || caracter == ' ' || caracter == '-'
+      ).toList
+      if(macheados.length == palabraNormalizada.length)
         resultadosPartidaNuevos = ResultadosPartida.JugadorGana
 
     }else{
@@ -70,7 +71,7 @@ private class AhorcadoPartidaImpl (
 
 private object Utilidades {
   def normalizarCaracter(c:Char): Char = c.toLower
-  def normalizarPalabra(p: String): String = p.toList.map(normalizarCaracter).toString
+  def normalizarPalabra(p: String): String = p.toList.map(normalizarCaracter).mkString("")
 
   def enmascararPalabra(palabraAAdivinar: String, letrasUsadas: List[Char]): String = {
     palabraAAdivinar.toList.map(

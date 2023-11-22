@@ -13,7 +13,7 @@ object JugadoresRepositorioEnMySQL extends JugadoresRepositorio{
 
   private def cargaInicialDeUsuarios():Unit={
     val statement = DBConnectionProvider.connection.createStatement()
-    statement.executeQuery("CREATE TABLE IF NOT EXISTS jugadores( nombre VARCHAR(50) NOT NULL")
+    statement.execute("CREATE TABLE IF NOT EXISTS jugadores( nombre VARCHAR(50) NOT NULL)")
     val listadoDeNombres = statement.executeQuery("SELECT nombre FROM jugadores")
     while(listadoDeNombres.next()){
       val jugador = new Jugador(listadoDeNombres.getString("nombre"))
