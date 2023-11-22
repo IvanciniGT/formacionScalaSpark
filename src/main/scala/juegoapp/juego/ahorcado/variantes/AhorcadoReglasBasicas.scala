@@ -18,9 +18,13 @@ object AhorcadoReglasBasicas extends AhorcadoReglas{
 
 
   override def calculaResultado(partida: AhorcadoPartida, letra: Object*): AhorcadoPartida = {
-
-    return null
+    this.calculaResultado(partida, letra(0).asInstanceOf[Char])
   }
+  private def calculaResultado(partida: AhorcadoPartida, letra: Char): AhorcadoPartida = {
+
+  }
+
+
 }
 
 private class AhorcadoPartidaImpl (
