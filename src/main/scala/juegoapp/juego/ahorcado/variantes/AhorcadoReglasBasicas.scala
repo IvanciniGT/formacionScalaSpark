@@ -34,12 +34,12 @@ object AhorcadoReglasBasicas extends AhorcadoReglas{
     letrasUsadasNuevas = nuevaLetra :: letrasUsadasNuevas
     if(palabraNormalizada.contains(nuevaLetra)) {
       if(!palabraNormalizada.exists(
-        caracter => !letrasUsadasNuevas.contains(caracter) && caracter != ' ' && caracter != '-'
+        caracter => (!letrasUsadasNuevas.contains(caracter)) && caracter != ' ' && caracter != '-'
       ))
         resultadosPartidaNuevos = ResultadosPartida.JugadorGana
 
     }else{
-      vidasNuevas = vidasNuevas - 1
+      vidasNuevas-=1
       if(vidasNuevas == 0)
         resultadosPartidaNuevos = ResultadosPartida.ComputadoraGana
     }
@@ -82,7 +82,7 @@ private object Utilidades {
         else
           '_'
       }
-    ).toString
+    ).mkString("")
   }
 }
 

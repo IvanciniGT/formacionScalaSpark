@@ -3,7 +3,7 @@ package juegoapp.arranque
 
 import juegoapp.JuegoAppFlujo
 import juegoapp.interfaces.InterfazAppJuegosConsola
-import juegoapp.repositories.{JuegosRepositorioParaConsola, JugadoresRepositorioEnRAM, PartidasRepositorioEnRAM}
+import juegoapp.repositories.{JuegosRepositorioParaConsola, JugadoresRepositorioEnMySQL, PartidasRepositorioEnRAM}
 
 object JuegoAppConsola {
 
@@ -11,7 +11,7 @@ object JuegoAppConsola {
     new JuegoAppFlujo(
                         InterfazAppJuegosConsola,
                         JuegosRepositorioParaConsola,
-                        JugadoresRepositorioEnRAM,
+                        JugadoresRepositorioEnMySQL,
                         PartidasRepositorioEnRAM).iniciarAppJuego()
     }
 

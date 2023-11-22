@@ -8,13 +8,12 @@ object H2DatabaseSQL {
     //Class.forName("org.h2.Driver")
     //val connection: Connection = DriverManager.getConnection(url, "sa", "")
     val url = "jdbc:mysql://63.32.44.28:3333/midb"
-    //Class.forName("org.h2.Driver")
     Class.forName("com.mysql.cj.jdbc.Driver")
     val connection: Connection = DriverManager.getConnection(url, "usuario", "password")
-    //63.32.44.28
     try {
       val statement = connection.createStatement()
       statement.execute("CREATE TABLE IF NOT EXISTS personas (id INT PRIMARY KEY, nombre VARCHAR(255))")
+      statement.execute("DELETE FROM personas")
       statement.execute("INSERT INTO personas VALUES (1, 'Felipe')")
       statement.execute("INSERT INTO personas VALUES (2, 'Menchu')")
       val resultSet: ResultSet = statement.executeQuery("SELECT * FROM personas")
