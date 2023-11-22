@@ -14,7 +14,7 @@ object PiedraPapelTijera  extends Juego[PPTPartida, PPTReglas, PPTInterfaz] {
     interfaz.mostrarBienvenidaAlJuego(partida)
     partida.eleccionDeLaComputadora = eleccionAlAzar(reglas.getEleccionesPermitidas)
     partida.eleccionDelJugador = interfaz.pedirEleccionJugador(partida, reglas);
-    partida.resultado = reglas.calculaResultado(partida);
+    reglas.calculaResultado(partida);
     interfaz.mostrarResultadoDeLaPartida(partida)
     partida
   }

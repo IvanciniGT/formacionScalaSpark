@@ -4,5 +4,7 @@ package juegoapp.juego.ahorcado
 import com.curso.juegoapp.juego.Interfaz
 
 trait AhorcadoInterfaz extends Interfaz[AhorcadoPartida] {
-  def pedirEleccionJugador(partida: AhorcadoPartida, reglas: AhorcadoReglas): PPTEleccion
+  def solicitarLetra(partida: AhorcadoPartida): Char
+
+  def solicitarTema(temas: AhorcadoTemasRepositorio): String
 }

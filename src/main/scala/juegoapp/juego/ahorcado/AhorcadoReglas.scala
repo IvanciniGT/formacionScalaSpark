@@ -7,6 +7,8 @@ import com.curso.juegoapp.entity.Jugador
 
 trait AhorcadoReglas extends Reglas[AhorcadoPartida] {
 
-  def iniciarPartida(jugador: Jugador, nombreJuego: String, palabra: String): AhorcadoPartida
+  def iniciarPartida(jugador: Jugador, nombreJuego: String): AhorcadoPartida
+
+  def asignarPalabra(partida:AhorcadoPartida, palabra: String): AhorcadoPartida
 
 }

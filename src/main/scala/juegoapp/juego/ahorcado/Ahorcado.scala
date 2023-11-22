@@ -9,16 +9,19 @@ import scala.util.Random
 object Ahorcado  extends Juego[AhorcadoPartida, AhorcadoReglas, AhorcadoInterfaz] {
 
   override def jugarPartida
-  (jugador: Jugador, reglas: AhorcadoReglas, interfaz: AhorcadoInterfaz, nombreJuego:String ): Partida = {
-    val partida = new AhorcadoPartida(jugador,nombreJuego );
+  (jugador: Jugador, reglas: AhorcadoReglas, interfaz: AhorcadoInterfaz, nombreJuego:String, repoPalabras: AhorcadoTemasRepositorio ): Partida = {
+    var partida =reglas.iniciarPartida(jugador, nombreJuego)
+    // Solicitar tema
     interfaz.mostrarBienvenidaAlJuego(partida)
-    partida.eleccionDeLaComputadora = eleccionAlAzar(reglas.getEleccionesPermitidas)
-    partida.eleccionDelJugador = interfaz.pedirEleccionJugador(partida, reglas);
-    partida.resultado = reglas.calculaResultado(partida);
+    val tema: String = interfaz.solicitarTema(repoPalabras.temas)
+    val palabra: String = repoPalabras.getPalabraAlAzar(tema)
+    partida =reglas.asignarPalabra(partida, palabra)
+
+    while(partida.resultado == null){
+      val letra: Char = interfaz.solicitarLetra(partida)
+      reglas.calculaResultado(partida, letra)
+    }
     interfaz.mostrarResultadoDeLaPartida(partida)
     partida
   }
-
-  def eleccionAlAzar(valores: List[PPTEleccion]):PPTEleccion = valores(Random.nextInt(valores.length))
-
 }

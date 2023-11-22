@@ -1,9 +1,8 @@
 package com.curso
 package juegoapp.juego.ppt.variantes
 
-import com.curso.juegoapp.entity.ResultadosPartida.{ComputadoraGana, Empate, JugadorGana, Resultado}
-
-import com.curso.juegoapp.juego.ppt.{PPTEleccion, PPTPartida, PPTReglas}
+import juegoapp.entity.ResultadosPartida.{ComputadoraGana, Empate, JugadorGana}
+import juegoapp.juego.ppt.{PPTEleccion, PPTPartida, PPTReglas}
 
 object PPTReglasBasicas extends PPTReglas{
   object Piedra extends PPTEleccion("PIEDRA")
@@ -18,12 +17,13 @@ object PPTReglasBasicas extends PPTReglas{
                 (Tijera , Map( (Piedra, ComputadoraGana),(Papel, JugadorGana), (Tijera,Empate) ) )
   )
 
-  override def calculaResultado(partida: PPTPartida, otros:Object*): Resultado = {
+  override def calculaResultado(partida: PPTPartida, otros:Object*): PPTPartida = {
     if(partida.eleccionDelJugador == null)
       throw new Exception("Me faltan datos")
     if(partida.eleccionDeLaComputadora == null)
       throw new Exception("Me faltan datos")
-    reglas(partida.eleccionDelJugador)(partida.eleccionDeLaComputadora)
+    partida.resultado = reglas(partida.eleccionDelJugador)(partida.eleccionDeLaComputadora)
+    partida
   }
 
   override def getEleccionesPermitidas: List[PPTEleccion] = elecciones
