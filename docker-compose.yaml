@@ -8,14 +8,19 @@ services:
     ports:
       - 3333:3306
     volumes:
-      - /home/ubuntu/environment/datos/mimysql:/var/lib/mysql
+      - volumenDB:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=midb
       - MYSQL_USER=usuario
       - MYSQL_PASSWORD=password
-
+volumes:
+  volumenDB:
 # docker compose up # Crea los contenedores y los arranca
 # docker compose down # Parar los contenedors y borrarlos
 # docker compose stop # Parar los contenedors
 # docker compose start # Arranca los contenedors
+
+# docke exec -it mi-mysql mysql -u usuario -p # Entrar en el contenedor y ejecutar mysql
+# show databases; # Mostrar las bases de datos
+# use midb; # Usar la base de datos
