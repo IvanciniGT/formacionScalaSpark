@@ -8,4 +8,5 @@ lazy val root = (project in file("."))
     idePackagePrefix := Some("com.curso")
   )
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.17" % Test
-libraryDependencies += "com.h2database" % "h2" % "2.2.224" //% Test
+libraryDependencies += "com.h2database" % "h2" % "2.2.224"
+
