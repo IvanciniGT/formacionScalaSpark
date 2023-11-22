@@ -2,12 +2,14 @@ package com.curso
 package juegoapp.juego.ahorcado.variantes
 
 import juegoapp.JuegoConcreto
+import juegoapp.entity.{Jugador, Partida}
+import juegoapp.juego.ahorcado.Ahorcado
 
-import com.curso.juegoapp.entity.{Jugador, Partida}
-import com.curso.juegoapp.juego.ppt.PiedraPapelTijera
-
+import com.curso.juegoapp.juego.ahorcado.repositories.AhorcadoTemasRepositorioDeFicheros
 object JuegoAhorcadoBasicoConsola extends JuegoConcreto{
-  val nombre = "Piedra Papel Tijera (Reglas básicas)"
-  override def jugarPartida(jugador: Jugador): Partida =
-    PiedraPapelTijera.jugarPartida(jugador, AhorcadoReglasBasicas, AhorcadoInterfazConsola, nombre)
+  val nombre = "Ahorcado clásico"
+  override def jugarPartida(jugador: Jugador): Partida = {
+    Ahorcado.repoPalabras = AhorcadoTemasRepositorioDeFicheros
+    Ahorcado.jugarPartida(jugador, AhorcadoReglasBasicas, AhorcadoInterfazConsola, nombre)
+  }
 }

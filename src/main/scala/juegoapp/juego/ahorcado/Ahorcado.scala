@@ -1,15 +1,15 @@
 package com.curso
 package juegoapp.juego.ahorcado
 
-import com.curso.juegoapp.entity.{Jugador, Partida}
-import com.curso.juegoapp.juego.Juego
-
-import scala.util.Random
+import juegoapp.entity.{Jugador, Partida}
+import juegoapp.juego.Juego
 
 object Ahorcado  extends Juego[AhorcadoPartida, AhorcadoReglas, AhorcadoInterfaz] {
 
+  var repoPalabras: AhorcadoTemasRepositorio = _
+
   override def jugarPartida
-  (jugador: Jugador, reglas: AhorcadoReglas, interfaz: AhorcadoInterfaz, nombreJuego:String, repoPalabras: AhorcadoTemasRepositorio ): Partida = {
+  (jugador: Jugador, reglas: AhorcadoReglas, interfaz: AhorcadoInterfaz, nombreJuego:String): Partida = {
     var partida =reglas.iniciarPartida(jugador, nombreJuego)
     // Solicitar tema
     interfaz.mostrarBienvenidaAlJuego(partida)

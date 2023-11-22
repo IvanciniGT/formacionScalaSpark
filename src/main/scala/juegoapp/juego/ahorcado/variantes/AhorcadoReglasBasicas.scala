@@ -57,11 +57,11 @@ object AhorcadoReglasBasicas extends AhorcadoReglas{
 }
 
 private class AhorcadoPartidaImpl (
-  val palabraAAdivinar: String = _,
+  val palabraAAdivinar: String = null,
   val vidasQueMeQuedan: Int = AhorcadoReglasBasicas.vidasIniciales,
-  val resultado: ResultadosPartida.Resultado = _,
-  val jugador: Jugador = _,
-  val nombreJuego: String = _,
+  val resultado: ResultadosPartida.Resultado = null,
+  val jugador: Jugador = null,
+  val nombreJuego: String = null,
   val letrasUsadas: List[Char] = List()
 )extends AhorcadoPartida {
   val palabraEnmascarada:String = if (palabraAAdivinar == null) null
