@@ -85,6 +85,7 @@ private object Utilidades {
       }
     ).mkString("")
   }
+  val caractersControlDNIEspaña = "TRWAGMYFPDXBNJZSQVHLCKE"
 }
 
 
