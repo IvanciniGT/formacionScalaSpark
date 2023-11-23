@@ -22,13 +22,17 @@ object DNIUtils {
     letra == letraCalculada
   }
   def main(args:Array[String]):Unit ={
-    println(validarDNI("12345678Z"))
-    println(validarDNI("53024501w"))
-    println(validarDNI("53.024.501W"))
-    println(validarDNI("53.024501W"))
-    println(validarDNI("53024.501 W"))
-    println(validarDNI("53024501 W"))
-    println(validarDNI("53024501-W"))
-    println(validarDNI("53024501A"))
+    val listaDeDNIs = List("12345678Z",
+      "53024501w",
+      "53024501W",
+      "53024501w",
+      "53024501-W",
+      "53024501 W",
+      "53024.501 W",
+      "53.024501W",
+      "53.024.501a",
+      )
+    listaDeDNIs.map(dni => (dni, validarDNI(dni)))
+               .foreach( dniValidado => println(dniValidado._1 + " " + dniValidado._2))
   }
 }
