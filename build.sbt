@@ -11,3 +11,6 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.17" % Test
 libraryDependencies += "com.h2database" % "h2" % "2.2.224"
 libraryDependencies += "mysql" % "mysql-connector-java" % "8.0.33"
 
+// https://mvnrepository.com/artifact/org.apache.spark/spark-core
+libraryDependencies += "org.apache.spark" %% "spark-core" % "3.5.0"
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.5.0"

@@ -41,6 +41,8 @@ object SuministradorDeDiccionarios extends SuministradorDeDiccionarios {
 }
 
 object DiccionarioUtils{
+  def leerFicheroDeDiccionario(str: String, str1: String): Map[String, Array[String]] = ???
+
 
   private val DISTANCIA_MAXIMA = 2
   private val NUMERO_MAXIMO_DE_SUGERENCIAS = 8
